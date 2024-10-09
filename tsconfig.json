@@ -12,7 +12,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "content": ["./src/**/*.{js,jsx,ts,tsx}"]
+    }
   }
 }
