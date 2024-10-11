@@ -1,41 +1,23 @@
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/clerk-react"
-import { Link, Outlet, useNavigate } from "react-router-dom"
+import { Button } from "@/components/ui/button"
 
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
-
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
+import { Link, Outlet } from "react-router-dom"
 
 export default function RootLayout() {
-  const navigate = useNavigate()
-
   return (
-    <ClerkProvider
-      publishableKey={PUBLISHABLE_KEY}
-      routerPush={(to) => navigate(to)}
-      routerReplace={(to) => navigate(to, { replace: true })}
-    >
-      <nav className="flex justify-between p-4 border border-b">
-        <Link to="/">Budget Buddy</Link>
+    <>
+      <nav className="p-4 flex items-center justify-between">
+        <Link to="/" className="text-lg font-medium">
+          Budget Buddy
+        </Link>
 
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-
-        <SignedOut>
-          <Link to="/sign-in">Sign In</Link>
-        </SignedOut>
+        <Link to="/dashboard">
+          <Button variant="outline">Dashboard</Button>
+        </Link>
       </nav>
 
       <main>
         <Outlet />
       </main>
-    </ClerkProvider>
+    </>
   )
 }
