@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { SignedIn, UserButton } from "@clerk/clerk-react"
 
 import { Link, Outlet } from "react-router-dom"
 
@@ -10,9 +11,15 @@ export default function RootLayout() {
           Budget Buddy
         </Link>
 
-        <Link to="/dashboard">
-          <Button variant="outline">Dashboard</Button>
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/dashboard">
+            <Button variant="outline">Dashboard</Button>
+          </Link>
+
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
       </nav>
 
       <main>

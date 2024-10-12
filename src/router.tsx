@@ -5,6 +5,8 @@ import SignUpPage from "./pages/auth/SignUpPage"
 import DashboardPage from "./pages/Dashboard"
 import DashboardLayout from "./layouts/DashboardLayout"
 import RootLayout from "./layouts/RootLayout"
+import Finances from "./pages/Finances"
+import Savings from "./pages/Savings"
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
-    children: [{ path: "/dashboard", element: <DashboardPage /> }],
+    children: [
+      { index: true, element: <DashboardPage /> },
+      { path: "finances", element: <Finances /> },
+      { path: "savings", element: <Savings /> },
+    ],
   },
 ])
